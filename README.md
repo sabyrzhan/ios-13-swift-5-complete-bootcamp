@@ -11,3 +11,5 @@ Currently I have completed following chapters:
   * What I learned: some introduction to variables, simple data types, method invocations and UI/Code interactions by creating Dice roller app. Since I already have some background knowledge about variables and data types from Java -- I had to watch them quickly just to make some comparisons between 2 languages.
 * Chapter 5: Finished creating simple app Magic 8 Ball
 * Chapter 6: Completed the task related to Calculator autolayout.
+* Chapter 7: Finished the chapter by completing Xylophone functionality.
+  * https://developer.apple.com/documentation/dispatch -- About Dispatch or GCD -- let's to add concurrency functionality to your program
