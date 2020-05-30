@@ -13,3 +13,4 @@ Currently I have completed following chapters:
 * Chapter 6: Completed the task related to Calculator autolayout.
 * Chapter 7: Finished the chapter by completing Xylophone functionality.
   * https://developer.apple.com/documentation/dispatch -- About Dispatch or GCD -- let's to add concurrency functionality to your program
+* Chapter 8: Finished the chapter. Learned that we can use Timer class to enable countdown/countup timer in your app with 1 second delay
