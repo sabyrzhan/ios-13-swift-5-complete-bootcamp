@@ -16,3 +16,4 @@ Currently I have completed following chapters:
 * Chapter 8: Finished the chapter. Learned that we can use Timer class to enable countdown/countup timer in your app with 1 second delay
 * Chapter 9: learned about struct in Swift, progress bar view, how to create custom buttons using background, structs and some did some MVC stuff
 * Chapter 10: Finished. Some practice project. Nothing challenging. Just to sum up what learned.
+* Chapter 11: Finished it. Learned the diff between Struct vs Class, working with segues and additional VCs.
