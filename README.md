@@ -15,3 +15,4 @@ Currently I have completed following chapters:
   * https://developer.apple.com/documentation/dispatch -- About Dispatch or GCD -- let's to add concurrency functionality to your program
 * Chapter 8: Finished the chapter. Learned that we can use Timer class to enable countdown/countup timer in your app with 1 second delay
 * Chapter 9: learned about struct in Swift, progress bar view, how to create custom buttons using background, structs and some did some MVC stuff
+* Chapter 10: Finished. Some practice project. Nothing challenging. Just to sum up what learned.
