@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct WeatherManager {
     let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=ac4119e6c195057a1cd530ac6e9630d3&units=metric"
@@ -18,8 +19,9 @@ struct WeatherManager {
         performRequest(urlString: urlString)
     }
     
-    func fetchWeather(latitude: Double, longitude: Double) {
-        
+    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
+        performRequest(urlString: urlString)
     }
     
     func performRequest(urlString: String) {
