@@ -19,3 +19,4 @@ Currently I have completed following chapters:
 * Chapter 11: Finished it. Learned the diff between Struct vs Class, working with segues and additional VCs.
 * Chapter 12: Finished chapter by working on excercise project. Nothing new to learn.
 * Chapter 13: Learned about protocol/extensions and delegates, location management
+* Chapter 14: Practice project: fetch bitcoin rates for selected currency. Use knowledge about network, REST API usage, extensions and protocols.
