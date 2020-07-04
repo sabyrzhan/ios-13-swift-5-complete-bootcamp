@@ -32,6 +32,7 @@
 		738B36DB24B0C5FB0017369A /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		738B36DE24B0DE4D0017369A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		738B36E024B0E2B30017369A /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		F5B82CF924B0E78400C85E10 /* HackerNewsApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HackerNewsApp.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 		738B36C324B0C04A0017369A /* HackerNewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				F5B82CF924B0E78400C85E10 /* HackerNewsApp.entitlements */,
 				738B36D824B0C3DB0017369A /* Models */,
 				738B36C424B0C04A0017369A /* AppDelegate.swift */,
 				738B36C624B0C04A0017369A /* SceneDelegate.swift */,
@@ -248,7 +250,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -302,7 +304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -316,8 +318,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HackerNewsApp/HackerNewsApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"HackerNewsApp/Preview Content\"";
+				DEVELOPMENT_TEAM = WX4E294MK6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = HackerNewsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -326,6 +331,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kz.sabyrzhan.HackerNewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -335,8 +341,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HackerNewsApp/HackerNewsApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"HackerNewsApp/Preview Content\"";
+				DEVELOPMENT_TEAM = WX4E294MK6;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = HackerNewsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -345,6 +354,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kz.sabyrzhan.HackerNewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
