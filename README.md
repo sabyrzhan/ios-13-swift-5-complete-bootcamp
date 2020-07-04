@@ -21,3 +21,10 @@ Currently I have completed following chapters:
 * Chapter 13: Learned about protocol/extensions and delegates, location management
 * Chapter 14: Practice project: fetch bitcoin rates for selected currency. Use knowledge about network, REST API usage, extensions and protocols.
 * Chapter 15: Learned about UITableViewController and working with Firebase, managing keyboard autohide and autopopup using IQKeyboardManager.
+* Chapter 17: Learned about SwiftUI. Stopped at Video 7
+
+
+## Useful resources
+* https://flatuicolors.com/ - online color picker
+* https://www.uicolor.io/ - online converter of colors to UIColor
+* https://fonts.google.com/ - free to use Fonts
