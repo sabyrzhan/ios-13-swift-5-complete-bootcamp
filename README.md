@@ -22,7 +22,7 @@ Currently I have completed following chapters:
 * Chapter 14: Practice project: fetch bitcoin rates for selected currency. Use knowledge about network, REST API usage, extensions and protocols.
 * Chapter 15: Learned about UITableViewController and working with Firebase, managing keyboard autohide and autopopup using IQKeyboardManager.
 * Chapter 17: Learned about SwiftUI, observable pattern, adding logics into ContentView, running iOS application on Mac by enabling Catalyst.
-
+* Chapter 19: Learned about UserDefaults to persist user data. Stopped at video 8.
 
 ## Useful resources
 * https://flatuicolors.com/ - online color picker
