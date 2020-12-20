@@ -16,16 +16,7 @@ class TodolistViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        if let items = defaults.array(forKey: "TodoListArray") {
-//            itemArray = items as! [String]
-//        }
-        
-        //"Find Mike", "Buy Eggos", "Destroy Demogorgan"
-        
-        itemArray.append(Item(title: "Find Mike"))
-        itemArray.append(Item(title: "Buy Eggos"))
-        itemArray.append(Item(title: "Destroy Demogorgan"))
+        loadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,6 +69,19 @@ class TodolistViewController: UITableViewController {
             print("Error while saving data: \(error)")
         }
         
+        tableView.reloadData()
+    }
+    
+    func loadData() {
+        if let savedData = try? Data(contentsOf: itemsList!) {
+            let decoder = PropertyListDecoder.init()
+            do {
+                let decodedData = try decoder.decode([Item].self, from: savedData)
+                itemArray = decodedData
+            } catch {
+                print("Error while loading data: \(error)")
+            }
+        }
         tableView.reloadData()
     }
 }
