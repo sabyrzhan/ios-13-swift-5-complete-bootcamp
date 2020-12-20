@@ -12,7 +12,7 @@ class TodolistViewController: UITableViewController {
     
     var itemArray = [Item]()
     
-    let defaults = UserDefaults.standard
+    let itemsList = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ItemsList.plist")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class TodolistViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        tableView.reloadData()
+        saveData()
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -55,8 +55,7 @@ class TodolistViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add item", style: .default) { (action) in
             self.itemArray.append(Item(title: mainTextField.text!))
-            self.defaults.setValue(self.itemArray, forKey: "TodoListArray")
-            self.tableView.reloadData()
+            self.saveData()
         }
         
         alert.addTextField { (textField) in
@@ -66,5 +65,19 @@ class TodolistViewController: UITableViewController {
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Items list manipulation
+    
+    func saveData() {
+        let encoder = PropertyListEncoder.init()
+        do {
+            let data = try encoder.encode(itemArray)
+            try data.write(to: itemsList!)
+        } catch {
+            print("Error while saving data: \(error)")
+        }
+        
+        tableView.reloadData()
     }
 }
