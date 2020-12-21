@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import CoreData
 
 class TodolistViewController: UITableViewController {
     
     var itemArray = [Item]()
     
     let itemsList = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ItemsList.plist")
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+//        loadData()
+        print(itemsList)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,7 +48,10 @@ class TodolistViewController: UITableViewController {
         let alert = UIAlertController(title: "Add new item", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add item", style: .default) { (action) in
-            self.itemArray.append(Item(title: mainTextField.text!))
+            let item = Item(context: self.context)
+            item.title = mainTextField.text!
+            item.done = false
+            self.itemArray.append(item)
             self.saveData()
         }
         
@@ -61,10 +67,8 @@ class TodolistViewController: UITableViewController {
     // MARK: Items list manipulation
     
     func saveData() {
-        let encoder = PropertyListEncoder.init()
         do {
-            let data = try encoder.encode(itemArray)
-            try data.write(to: itemsList!)
+            try context.save()
         } catch {
             print("Error while saving data: \(error)")
         }
@@ -72,16 +76,16 @@ class TodolistViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func loadData() {
-        if let savedData = try? Data(contentsOf: itemsList!) {
-            let decoder = PropertyListDecoder.init()
-            do {
-                let decodedData = try decoder.decode([Item].self, from: savedData)
-                itemArray = decodedData
-            } catch {
-                print("Error while loading data: \(error)")
-            }
-        }
-        tableView.reloadData()
-    }
+//    func loadData() {
+//        if let savedData = try? Data(contentsOf: itemsList!) {
+//            let decoder = PropertyListDecoder.init()
+//            do {
+//                let decodedData = try decoder.decode([Item].self, from: savedData)
+//                itemArray = decodedData
+//            } catch {
+//                print("Error while loading data: \(error)")
+//            }
+//        }
+//        tableView.reloadData()
+//    }
 }
