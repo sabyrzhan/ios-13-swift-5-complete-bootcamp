@@ -18,8 +18,7 @@ class TodolistViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadData()
-        print(itemsList)
+        loadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,7 +63,7 @@ class TodolistViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // MARK: Items list manipulation
+    // MARK: - Items list manipulation
     
     func saveData() {
         do {
@@ -76,16 +75,33 @@ class TodolistViewController: UITableViewController {
         tableView.reloadData()
     }
     
-//    func loadData() {
-//        if let savedData = try? Data(contentsOf: itemsList!) {
-//            let decoder = PropertyListDecoder.init()
-//            do {
-//                let decodedData = try decoder.decode([Item].self, from: savedData)
-//                itemArray = decodedData
-//            } catch {
-//                print("Error while loading data: \(error)")
-//            }
-//        }
-//        tableView.reloadData()
-//    }
+    func loadData(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error while fetching data: \(error)")
+        }
+        
+        tableView.reloadData()
+    }
+}
+
+// MARK: - Search bar methods
+extension TodolistViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        loadData(with: request)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0 {
+            loadData()
+            print("Search text: \(searchText)")
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
 }
