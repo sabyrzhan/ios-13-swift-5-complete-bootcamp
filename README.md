@@ -22,11 +22,12 @@ Currently I have completed following chapters:
 * Chapter 14: Practice project: fetch bitcoin rates for selected currency. Use knowledge about network, REST API usage, extensions and protocols.
 * Chapter 15: Learned about UITableViewController and working with Firebase, managing keyboard autohide and autopopup using IQKeyboardManager.
 * Chapter 17: Learned about SwiftUI, observable pattern, adding logics into ContentView, running iOS application on Mac by enabling Catalyst.
-* Chapter 18: Stopped at video 29.
+* Chapter 18: Stopped at video 36.
    - Learned about UserDefaults
    - FileManager to persist user data
    - CRUD data and adding predicates to query using CoreData, SeachBar.
    - Add RealmSwift pod to use instead of CoreData
+   - Migrated from CoreData to RealmSwift
 
 ## Useful resources
 * https://appicon.co/ - Android (basic) and iOS icon generators

@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class CategoryViewController: UITableViewController {
     
-    var categoriesArray = [Category]()
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var categoriesArray: Results<Category>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +27,9 @@ class CategoryViewController: UITableViewController {
         let alert = UIAlertController(title: "Add new category", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add category", style: .default) { (action) in
-            let item = Category(context: self.context)
-            item.name = mainTextField.text!
-            self.categoriesArray.append(item)
-            self.saveData()
+            let category = Category()
+            category.name = mainTextField.text!
+            self.save(category)
         }
         
         alert.addTextField { (textField) in
@@ -44,9 +41,12 @@ class CategoryViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func saveData() {
+    func save(_ category: Category) {
         do {
-            try context.save()
+            let realm = try! Realm()
+            try realm.write {
+                realm.add(category)
+            }
         } catch {
             print("Error while saving data: \(error)")
         }
@@ -54,12 +54,9 @@ class CategoryViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func loadData(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
-        do {
-            categoriesArray = try context.fetch(request)
-        } catch {
-            print("Error while fetching data: \(error)")
-        }
+    func loadData() {
+        let realm = try! Realm()
+        categoriesArray = realm.objects(Category.self)
         
         tableView.reloadData()
     }
@@ -69,13 +66,13 @@ class CategoryViewController: UITableViewController {
 
 extension CategoryViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoriesArray.count
+        return categoriesArray?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell")
-        let category = categoriesArray[indexPath.row]
-        cell?.textLabel?.text = category.name!
+        let category = categoriesArray![indexPath.row]
+        cell?.textLabel?.text = category.name
         
         return cell!
     }
@@ -90,7 +87,7 @@ extension CategoryViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = tableView.indexPathForSelectedRow
-        let selectedCategory = categoriesArray[indexPath!.row]
+        let selectedCategory = categoriesArray![indexPath!.row]
         let destinationVC = segue.destination as! TodolistViewController
         destinationVC.selectedCategory = selectedCategory
     }
