@@ -8,15 +8,16 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
-class CategoryViewController: UITableViewController {
+class CategoryViewController: SwipeTableViewController {
     
     var categoriesArray: Results<Category>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("ItemsList.plist"))
+        print(Realm.Configuration.defaultConfiguration.fileURL)
     }
     
     // MARK: - Data manipulation methods
@@ -60,6 +61,18 @@ class CategoryViewController: UITableViewController {
         
         tableView.reloadData()
     }
+    
+    override func updateModel(at indexPath: IndexPath) {
+        super.updateModel(at: indexPath)
+        let realm = try! Realm()
+       do {
+           try realm.write {
+               realm.delete(self.categoriesArray![indexPath.row])
+           }
+       } catch {
+           print("Error deleting category: \(error)")
+       }
+    }
 }
 
 // MARK: - Table data source
@@ -70,11 +83,11 @@ extension CategoryViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell")
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let category = categoriesArray![indexPath.row]
-        cell?.textLabel?.text = category.name
+        cell.textLabel?.text = category.name
         
-        return cell!
+        return cell
     }
 }
 
