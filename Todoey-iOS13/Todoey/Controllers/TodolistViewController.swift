@@ -8,8 +8,11 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class TodolistViewController: SwipeTableViewController {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     let realm = try! Realm()
     
@@ -25,6 +28,21 @@ class TodolistViewController: SwipeTableViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        title = selectedCategory?.name
+        
+        if let color = selectedCategory?.color {
+            updateNavBar(with: color)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateNavBar(with: "1D9BF6")
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoItems?.count ?? 0
     }
@@ -32,7 +50,13 @@ class TodolistViewController: SwipeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let item = todoItems![indexPath.row]
-        cell.textLabel?.text = item.done ? item.title + "   ✅" : item.title
+        cell.textLabel?.text = item.title
+        
+        let percentage = CGFloat(indexPath.row) / CGFloat(todoItems!.count)
+        if let backgroundColor = UIColor.init(hexString: selectedCategory!.color)?.darken(byPercentage: percentage) {
+            cell.backgroundColor = backgroundColor
+            cell.textLabel?.textColor = ContrastColorOf(cell.backgroundColor!, returnFlat: true)
+        }
         
         cell.accessoryType = item.done ? .checkmark : .none
         
@@ -82,6 +106,28 @@ class TodolistViewController: SwipeTableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    // MARK: - Navbar methods
+    func updateNavBar(with hexColor: String) {
+        guard let navBar =  navigationController?.navigationBar else { fatalError() }
+        guard let uiColor = UIColor.init(hexString: hexColor) else { fatalError() }
+        let contrastColor = ContrastColorOf(uiColor, returnFlat: true)
+        
+        title = selectedCategory?.name
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = uiColor
+        appearance.titleTextAttributes = [.foregroundColor: contrastColor]
+        appearance.largeTitleTextAttributes = [.foregroundColor: contrastColor]
+        
+        navBar.tintColor = contrastColor
+        navBar.compactAppearance = appearance
+        navBar.standardAppearance = appearance
+        navBar.scrollEdgeAppearance = appearance
+        
+        searchBar.barTintColor = uiColor
+        searchBar.searchTextField.textColor =  contrastColor
+    }
+    
     // MARK: - Items list manipulation
     
     func saveData(_ item: Item) {
@@ -112,7 +158,6 @@ class TodolistViewController: SwipeTableViewController {
         } catch {
             print("Error deleting item: \(error)")
         }
-        
     }
 }
 

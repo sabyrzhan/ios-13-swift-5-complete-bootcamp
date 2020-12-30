@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
+import ChameleonFramework
 
 class CategoryViewController: SwipeTableViewController {
     
@@ -17,7 +18,17 @@ class CategoryViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+        tableView.separatorStyle = .none
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(hexString: "1D9BF6")
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     // MARK: - Data manipulation methods
@@ -30,6 +41,7 @@ class CategoryViewController: SwipeTableViewController {
         let action = UIAlertAction(title: "Add category", style: .default) { (action) in
             let category = Category()
             category.name = mainTextField.text!
+            category.color = UIColor.randomFlat().hexValue()
             self.save(category)
         }
         
@@ -86,6 +98,21 @@ extension CategoryViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let category = categoriesArray![indexPath.row]
         cell.textLabel?.text = category.name
+        if category.color.isEmpty {
+            let realm = try! Realm()
+            do {
+                try realm.write {
+                    category.color = UIColor.randomFlat().hexValue()
+                }
+            } catch {
+                print("Error saving color of the category: \(error)")
+            }
+        }
+        
+        if let uiColor = UIColor.init(hexString: category.color) {
+            cell.backgroundColor = uiColor
+            cell.textLabel?.textColor = ContrastColorOf(uiColor, returnFlat: true)
+        }
         
         return cell
     }
