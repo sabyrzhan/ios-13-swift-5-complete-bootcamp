@@ -30,7 +30,8 @@ Currently I have completed following chapters:
    - Migrated from CoreData to RealmSwift
    - Integrated SwipeTableViewCell and used inheritence
    - Imporeved design using Chameleon library
-* Chapter 19: Stopped at video 1
+* Chapter 19: Didnt pass it. Need Apple Developer Account.
+* Chapter 21: Created "Hotdog or Not hotdog" app with CoreML
 
 ## iOS libraries
 * RealmSwift - DB ORM
