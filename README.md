@@ -32,6 +32,7 @@ Currently I have completed following chapters:
    - Imporeved design using Chameleon library
 * Chapter 19: Didnt pass it. Need Apple Developer Account.
 * Chapter 21: Created "Hotdog or Not hotdog" app with CoreML
+* Chapter 23: Created "WhatFlower" app with CoreML and Caffe pretrained model
 
 ## iOS libraries
 * RealmSwift - DB ORM
@@ -46,3 +47,5 @@ Currently I have completed following chapters:
 * https://flatuicolors.com/ - online color picker
 * https://www.uicolor.io/ - online converter of colors to UIColor
 * https://fonts.google.com/ - free to use Fonts
+* https://www.freepik.com - free graphics resources (images, PSD, args etc)
+* https://makeappicon.com - create iOS app icons
