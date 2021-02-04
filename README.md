@@ -33,6 +33,8 @@ Currently I have completed following chapters:
 * Chapter 19: Didnt pass it. Need Apple Developer Account.
 * Chapter 21: Created "Hotdog or Not hotdog" app with CoreML
 * Chapter 23: Created "WhatFlower" app with CoreML and Caffe pretrained model
+* Chapter 24: Built own ML model to detect VW cars
+* Chapter 25: Built NLP processing app using Twitter data
 
 ## iOS libraries
 * RealmSwift - DB ORM
