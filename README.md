@@ -35,6 +35,7 @@ Currently I have completed following chapters:
 * Chapter 23: Created "WhatFlower" app with CoreML and Caffe pretrained model
 * Chapter 24: Built own ML model to detect VW cars
 * Chapter 25: Built NLP processing app using Twitter data
+* Chapter 26: Generating 3D objects and horizontal planes using ARKit. Stopped at video 9.
 
 ## iOS libraries
 * RealmSwift - DB ORM
@@ -51,3 +52,4 @@ Currently I have completed following chapters:
 * https://fonts.google.com/ - free to use Fonts
 * https://www.freepik.com - free graphics resources (images, PSD, args etc)
 * https://makeappicon.com - create iOS app icons
+* https://www.solarsystemscope.com/textures/ - 3D maps of planets for ARKit
