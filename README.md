@@ -35,7 +35,11 @@ Currently I have completed following chapters:
 * Chapter 23: Created "WhatFlower" app with CoreML and Caffe pretrained model
 * Chapter 24: Built own ML model to detect VW cars
 * Chapter 25: Built NLP processing app using Twitter data
-* Chapter 26: Generating 3D objects and horizontal planes using ARKit. Stopped at video 9.
+* Chapter 26: Generating 3D objects and horizontal planes using ARKit.
+* BONUS: The complete app design course. Overall, the design is made in following order:
+  1. User flow dragram - drown using pencil or online tool to quickly draw forms. Can use https://miro.com/
+  2. Prototype/Wireframe - draw using more like app design, but still with mock elements. Can use https://marvelapp.com/ or https://www.canva.com/ or https://proto.io/
+  3. Mockup - actual design of the app for specific platform (iOS or Android). Can use Sketch app, Principle for Mac.
 
 ## iOS libraries
 * RealmSwift - DB ORM
@@ -53,3 +57,17 @@ Currently I have completed following chapters:
 * https://www.freepik.com - free graphics resources (images, PSD, args etc)
 * https://makeappicon.com - create iOS app icons
 * https://www.solarsystemscope.com/textures/ - 3D maps of planets for ARKit
+
+## Useful resources for graphic designers
+For HD photographic Images, these are my favourite websites:
+* http://www.resplashed.com/
+* https://pixabay.com/
+
+For vector images:
+* https://www.vecteezy.com/
+* http://www.freepik.com/
+
+These are some of my favourite resources for free (with attribution) icons:
+* http://www.flaticon.com/
+* https://material.io/icons/
+* http://fontawesome.io/
