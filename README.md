@@ -40,6 +40,11 @@ Currently I have completed following chapters:
   1. User flow dragram - drown using pencil or online tool to quickly draw forms. Can use https://miro.com/
   2. Prototype/Wireframe - draw using more like app design, but still with mock elements. Can use https://marvelapp.com/ or https://www.canva.com/ or https://proto.io/
   3. Mockup - actual design of the app for specific platform (iOS or Android). Can use Sketch app, Principle for Mac.
+* BONUS: The compete app marketing course.
+  1. Useful resources for landing page creation: https://www.leadpages.com/, https://unbounce.com/
+  2. Idea validation: https://quickmvp.com/
+  3. Device mockups for screenshots - https://mockuphone.com/, https://github.com/launchkit/launchkit/
+  4. Stopped at video 23
 
 ## iOS libraries
 * RealmSwift - DB ORM
